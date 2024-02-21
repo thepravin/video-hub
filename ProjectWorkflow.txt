@@ -1,0 +1,11 @@
+
+Head
+
+Body
+    sidebar - {menuitems}
+    
+    
+mainContainer
+    buttonslist
+    videocontainer
+    videocard
