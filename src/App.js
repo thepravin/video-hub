@@ -5,6 +5,7 @@ import store from "./utils/sotre";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import MainContainer from "./Components/MainContainer";
 import Watch from "./Components/Watch";
+// import "./App.css";
 
 const appRouter = createBrowserRouter([
   {

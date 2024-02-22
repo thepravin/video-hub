@@ -16,10 +16,14 @@ const ButtonList = () => {
     "Fun",
     "Watched",
     "New to you",
+    "Sports",
+    "Fun",
+    "Watched",
+    "New to you",
   ];
 
   return (
-    <div className="flex">
+    <div className="flex mt-16 ">
       {list.map((item, index) => (
         <Buttons key={index} title={list[index]} />
       ))}

@@ -12,7 +12,7 @@ const Sidebar = () => {
 
   // else
   return (
-    <div className="p-5 shadow-lg w-48">
+    <div className="p-5 mt-16 shadow-lg w-48">
       <ul>
         <li>
          <Link to={"/"}> <i className="fa-solid fa-house p-2"></i>Home</Link>
