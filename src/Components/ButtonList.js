@@ -16,10 +16,7 @@ const ButtonList = () => {
     "Fun",
     "Watched",
     "New to you",
-    "Sports",
-    "Fun",
-    "Watched",
-    "New to you",
+    
   ];
 
   return (
