@@ -1,18 +1,26 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
 import { YOUTUBE_SEARCH_API } from "../utils/constants";
+import { cacheResults } from "../utils/searchSlice";
 
 const Head = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSeggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
+  const searchCache = useSelector((store) => store.cache);
 
-  // suggestion api call
+  //*********** suggestion api call
   const getSearchSuggestions = async () => {
     const data = await fetch(YOUTUBE_SEARCH_API + searchQuery);
     const json = await data.json();
     setSeggestions(json[1]);
+    // cache store
+    dispatch(
+      cacheResults({
+        [searchQuery]: json[1],
+      })
+    );
   };
 
   useEffect(() => {
@@ -22,7 +30,11 @@ const Head = () => {
       decline the API call 
     */
     const timer = setTimeout(() => {
-      getSearchSuggestions();
+      if (searchCache[searchQuery]) {
+        setShowSuggestions(searchCache[searchQuery]);
+      } else {
+        getSearchSuggestions();
+      }
     }, 200);
 
     return () => {
@@ -31,6 +43,7 @@ const Head = () => {
     };
   }, [searchQuery]);
 
+  // ********* sidebar
   const dispatch = useDispatch();
   const handleSidebar = () => {
     dispatch(toggleMenu());

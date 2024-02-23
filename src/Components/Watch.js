@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { closeMenu } from "../utils/appSlice";
 import { useSearchParams } from "react-router-dom";
+import CommentContainer from "./CommentContainer";
 
 const Watch = () => {
   // this is method to find id in query param
@@ -15,7 +16,8 @@ const Watch = () => {
   }, []);
 
   return (
-    <div className="p-5">
+    <div>
+      <div className="p-5 mt-12">
       <iframe
         width="1000"
         height="500"
@@ -25,6 +27,8 @@ const Watch = () => {
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowfullscreen
       ></iframe>
+    </div>
+    <CommentContainer/>
     </div>
   );
 };
