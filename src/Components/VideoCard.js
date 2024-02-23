@@ -1,34 +1,31 @@
 import React from "react";
+import { formattedCount, publicshedAgo } from "../utils/functions";
 
 const VideoCard = ({ info }) => {
   // Early return
   if (!info) return null;
 
- // console.log(info)
+  // console.log(info)
 
   const { snippet, statistics } = info;
   const { channelTitle, thumbnails, title, publishedAt } = snippet;
   const { viewCount } = statistics;
 
   // Convert publishedAt to days
-  const currentDate = new Date();
-  const videoDate = new Date(publishedAt);
-  const timeDifference = currentDate - videoDate;
-  const daysSincePublished = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+  const daysSincePublished =
+    publishedAt !== undefined ? publicshedAgo(publishedAt) : "";
 
   // Format view count
-  let formattedViewCount;
-  if (viewCount >= 1000000) {
-    formattedViewCount = (viewCount / 1000000).toFixed(1) + "M";
-  } else if (viewCount >= 1000) {
-    formattedViewCount = (viewCount / 1000).toFixed(1) + "K";
-  } else {
-    formattedViewCount = viewCount.toString();
-  }
+  const formattedViewCount =
+    viewCount !== undefined ? formattedCount(viewCount) : "";
 
   return (
     <div className="p-2 m-2 w-72 shadow-lg ">
-      <img alt="thumbnails" src={thumbnails.medium.url} className="rounded-lg"/>
+      <img
+        alt="thumbnails"
+        src={thumbnails.medium.url}
+        className="rounded-lg"
+      />
       <h3 className="font-bold">{title}</h3>
       <h4>{channelTitle}</h4>
       <div className="flex">
