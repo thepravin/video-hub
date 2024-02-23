@@ -4,33 +4,35 @@ import { closeMenu } from "../utils/appSlice";
 import { useSearchParams } from "react-router-dom";
 import CommentContainer from "./CommentContainer";
 import VideoData from "./VideoData";
+import LiveChat from "./LiveChat";
 
 const Watch = () => {
-  // this is method to find id in query param
   const [searchParams] = useSearchParams();
-  // console.log(searchParams.get("v"))
-
-  // sidebar close automaticaly
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(closeMenu());
   }, []);
 
   return (
-    <div>
-      <div className="p-5 mt-12">
-      <iframe
-        width="1000"
-        height="500"
-        src={"https://www.youtube.com/embed/"+searchParams.get("v")}//+"?&autoplay=1&mute=1"
-        title="YouTube video player"
-        frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowFullScreen
-      ></iframe>
-    </div>
-    <VideoData id={searchParams.get("v")}/>
-    <CommentContainer id={searchParams.get("v")}/>
+    <div className="flex flex-col w-full">
+      <div className="p-5 mt-12 flex ">
+        <div>
+          <iframe
+            width="1000"
+            height="500"
+            src={"https://www.youtube.com/embed/" + searchParams.get("v")}
+            title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          ></iframe>
+          <VideoData id={searchParams.get("v")} />
+        </div>
+        <div className="w-full">
+          {/* <LiveChat /> */}
+        </div>
+      </div>
+      <CommentContainer id={searchParams.get("v")} />
     </div>
   );
 };
