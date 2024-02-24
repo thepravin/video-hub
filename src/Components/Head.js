@@ -117,7 +117,8 @@ const Head = () => {
         </div>
       </div>
 
-      <div className="col-span-1">
+      <div className="col-span-1 flex justify-center items-center cursor-pointer">
+      <i class="fa-solid fa-bell fa-2xl mr-5"></i>
         <img
           alt="userIcon"
           src="https://www.svgrepo.com/show/350417/user-circle.svg"
