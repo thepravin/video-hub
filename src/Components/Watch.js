@@ -4,7 +4,7 @@ import { closeMenu } from "../utils/appSlice";
 import { useSearchParams } from "react-router-dom";
 import CommentContainer from "./CommentContainer";
 import VideoData from "./VideoData";
-import LiveChat from "./LiveChat";
+
 
 const Watch = () => {
   const [searchParams] = useSearchParams();
