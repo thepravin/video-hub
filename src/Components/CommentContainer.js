@@ -24,7 +24,7 @@ const CommentContainer = ({ id }) => {
 
 
     return (
-      <div className="flex shadow-sm bg-gray-100 p-2 rounded-lg my-2 w-[1000px] ">
+      <div className="flex shadow-sm bg-gray-100 p-2 rounded-lg my-2 w-[900px] ">
         <img
           className="w-12 h-12 rounded-full"
           alt="user"
