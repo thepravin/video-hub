@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { YOUTUB_VIDEOS_API } from "../utils/constants";
 import VideoCard from "./VideoCard";
 import { Link } from "react-router-dom";
+import HomeSimmerUI from "../SimmerUI/HomeSimmerUI";
 
 const VideoContainer = () => {
   const [videos, setVideos] = useState([]);
@@ -19,9 +20,15 @@ const VideoContainer = () => {
 
   return (
     <div className="flex flex-wrap justify-center items-center">
-      {videos.map((video, index) => (
-       <Link to={"/watch?v="+video.id}><VideoCard key={index} info={video} /></Link> 
-      ))}
+      {videos?.length === 0 ? (
+        <HomeSimmerUI />
+      ) : (
+        videos.map((video, index) => (
+          <Link to={"/watch?v=" + video.id}>
+            <VideoCard key={index} info={video} />
+          </Link>
+        ))
+      )}
     </div>
   );
 };

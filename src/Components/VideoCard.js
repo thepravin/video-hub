@@ -5,7 +5,7 @@ const VideoCard = ({ info }) => {
   // Early return
   if (!info) return null;
 
-  // console.log(info)
+  //console.log(info)
 
   const { snippet, statistics } = info;
   const { channelTitle, thumbnails, title, publishedAt } = snippet;
