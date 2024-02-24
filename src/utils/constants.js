@@ -19,6 +19,9 @@ export const VIDEO_COMMENTS =
 // "https://www.googleapis.com/youtube/v3/commentThreads?key=AIzaSyBK4ztdGTTR81CXoOA5NRYDSQudQMb53J4&textFormat=plainText&part=snippet&videoId=upDhKSx7P7E&maxResults=100";
 
 export const SEARCH_VIDEO_LIST =
-  "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&key=" +
+  "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&key=" +
   YOUTUB_KEY +
   "&q=";
+
+
+ // https://www.googleapis.com/youtube/v3/channels?part=statistics&id='.$channel_id.'&fields=items/statistics/subscriberCount&key=

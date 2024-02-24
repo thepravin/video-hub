@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
 import { YOUTUBE_SEARCH_API } from "../utils/constants";
 import { cacheResults } from "../utils/searchSlice";
+import { Link, useNavigate } from "react-router-dom";
 
 const Head = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -10,6 +11,7 @@ const Head = () => {
   const [showSuggestions, setShowSuggestions] = useState(false);
   const searchCache = useSelector((store) => store.cache);
   const inputRef = useRef(null);
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
 
@@ -58,7 +60,11 @@ const Head = () => {
   };
 
   const handleSuggestionClick = (clickedSuggestion) => {
+
+    if(!searchQuery || !clickedSuggestion) return ;
+
     setSearchQuery(clickedSuggestion);
+    navigate("/results?search_query="+clickedSuggestion);
     setShowSuggestions(false);    
   };
 
@@ -71,7 +77,8 @@ const Head = () => {
           onClick={() => handleSidebar()}
           className="h-8 cursor-pointer"
         />
-        <h1 className="font-bold text-3xl mx-2 ">𝓥𝓲𝓭𝓮𝓸𝓗𝓾𝓫</h1>
+       
+        <Link to={"/"}> <h1 className="font-bold text-3xl mx-2 ">𝓥𝓲𝓭𝓮𝓸𝓗𝓾𝓫</h1> </Link>
       </div>
 
       <div className="col-span-10 mx-auto">
@@ -85,12 +92,14 @@ const Head = () => {
             onFocus={() => setShowSuggestions(true)}
             ref={inputRef}
           />
-          <button className="border border-gray-500 px-3 py-2 rounded-r-full text-center bg-gray-200">
+          <button className="border border-gray-500 px-3 py-2 rounded-r-full text-center bg-gray-200"
+            onClick={()=>handleSuggestionClick(searchQuery)}
+          >
             <i className="fa-solid fa-magnifying-glass"></i>
           </button>
 
           {showSuggestions && (
-            <div className="absolute top-full left-0 bg-white px-2 w-[28rem] shadow-lg rounded-lg border border-gray-100 mt-1">
+            <div className="absolute cursor-pointer top-full left-0 bg-white px-2 w-[28rem] shadow-lg rounded-lg border border-gray-100 mt-1">
               <ul>
                 {suggestions.map((search, index) => (
                   <li

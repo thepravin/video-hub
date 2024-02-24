@@ -28,10 +28,10 @@ const VideoCard = ({ info }) => {
       />
       <h3 className="font-bold">{title}</h3>
       <h4>{channelTitle}</h4>
-      <div className="flex">
+      <div className="flex mt-2">
         <h5>{`${formattedViewCount} views`}</h5>
-        <h5>•</h5>
-        <h5>{`${daysSincePublished} days ago`}</h5>
+        <span className="font-bold ml-2 mr-2">•</span>
+        <h5>{`${daysSincePublished}`}</h5>
       </div>
     </div>
   );
