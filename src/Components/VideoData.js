@@ -71,7 +71,7 @@ const VideoData = ({ id }) => {
           <div className="bg-gray-200 rounded-lg m-2 p-2 shadow-lg">
             <div className="flex ml-3 font-bold">
               <h1>{formatedViewCount} views</h1>
-              <h1 className="ml-4">{daysSincePublished} day ago</h1>
+              <h1 className="ml-4">{daysSincePublished}</h1>
             </div>
             <button
               onClick={() => setShowDescription(!showDescription)}
