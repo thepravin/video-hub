@@ -9,7 +9,7 @@ Welcome to the Video Hub React App! This application is designed to provide user
 ## Deployment 🚀
 
 ```
-https://
+https://video-hub-smoky.vercel.app/
 ```
 
 ## 📝 What I Learned 
